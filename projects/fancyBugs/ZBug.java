@@ -1,18 +1,20 @@
 import info.gridworld.actor.Bug;
 
-public class SpiralBug extends Bug 
+public class ZBug extends Bug 
 {
     private int steps;
-    private int sideLength;
+    private int Zlength;
+    private int Zsides;
 
     /**
      * Constructs a box bug that traces a square of a given side length
      * @param length the side length
      */
-    public SpiralBug(int length)
+    public ZBug(int length)
     {
         steps = 0;
-        sideLength = length;
+        Zlength = length;
+        Zsides = 0;
     }
 
     /**
@@ -20,17 +22,26 @@ public class SpiralBug extends Bug
      */
     public void act()
     {
-        if (steps < sideLength && canMove())
+        if (Zsides == 0 || Zsides == 2) {
+            setDirection(90);
+        }
+
+        if (steps < Zlength && canMove() && Zsides < 3) 
         {
             move();
             steps++;
         }
-        else
+        else if(Zsides <= 2)
         {
             turn();
             turn();
+            turn();
             steps = 0;
-            sideLength++;
+            Zsides++;
         }
+        else {
+            return;
+        }     
     }
+
 }
