@@ -3,13 +3,31 @@ import java.awt.Color;
 
 public class RainbowBug extends Bug
 {
+    private int color;
+
     public void act()
     {
-        Color c = getColor();
-        int red = (int) (c.getRed());
-        int green = (int) (c.getGreen());
-        int blue = (int) (c.getBlue());
-        setColor(new Color(red,green,blue));
+        if (color == 0)
+        {
+            setColor(Color.ORANGE);
+            color++;
+        }
+        else if (color == 1)
+        {
+            setColor(Color.YELLOW);
+            color++;
+        }
+        else if(color == 2)
+        {
+            setColor(Color.GREEN);
+            color++;
+        }
+        else
+        {
+            setColor(Color.GREEN);
+            color = 0;
+        }
+        
     }
     
 }
