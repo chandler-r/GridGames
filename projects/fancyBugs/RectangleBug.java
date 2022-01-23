@@ -4,6 +4,7 @@ public class RectangleBug extends Bug{
     private int steps;
     private int sideWidth;  
     private int sideLength;
+    private int sideCounter;
 
     /**
      * Constructs a box bug that traces a square of a given side length
@@ -12,8 +13,9 @@ public class RectangleBug extends Bug{
     public RectangleBug(int length, int width)
     {
         steps = 0;
+        sideCounter = 0;
         sideLength = length;
-        sideWidth = width;
+        sideWidth = width - 1;
     }
 
     /**
@@ -21,16 +23,22 @@ public class RectangleBug extends Bug{
      */
     public void act()
     {
-        if (steps < sideLength && canMove())
+        if (steps < sideLength && sideCounter%2 == 0)
         {
             move();
             steps++;
         }
-        else
+        else if (steps < sideWidth && sideCounter%2==1)
+        {
+            move();
+            steps++;
+        }
+        else 
         {
             turn();
             turn();
             steps = 0;
+            sideCounter++;
         }
     }
     
