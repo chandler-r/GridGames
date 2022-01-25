@@ -7,8 +7,8 @@ public class ZBug extends Bug
     private int Zsides;
 
     /**
-     * Constructs a box bug that traces a square of a given side length
-     * @param length the side length
+     * Constructs a Z bug that traces a Z of a given side length
+     * @param length the side length of the Z
      */
     public ZBug(int length)
     {
@@ -22,10 +22,17 @@ public class ZBug extends Bug
      */
     public void act()
     {
+        /**
+         * When the bug is at the left side of the Z, it will turn to face the right
+         */
         if (Zsides == 0 || Zsides == 2) {
             setDirection(90);
         }
 
+        /**
+         * Moves the bug while the Z has less than three side and turns it when the bug has created 
+         * a side of the desired length
+         */
         if (steps < Zlength && canMove() && Zsides < 3) 
         {
             move();

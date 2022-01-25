@@ -7,6 +7,10 @@ public class RainbowBug extends Bug
 
     public void act()
     {
+        /*
+        Uses the int color to designate when to switch to different colors and
+        cycles through each color
+        */
         if (color == 0)
         {
             setColor(Color.ORANGE);
@@ -24,7 +28,7 @@ public class RainbowBug extends Bug
         }
         else
         {
-            setColor(Color.GREEN);
+            setColor(Color.BLUE);
             color = 0;
         }
         

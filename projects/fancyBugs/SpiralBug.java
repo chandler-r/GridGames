@@ -6,13 +6,12 @@ public class SpiralBug extends Bug
     private int sideLength;
 
     /**
-     * Constructs a box bug that traces a square of a given side length
-     * @param length the side length
+     * Constructs a spiral bug that traces a spiral from its starting point outwards
      */
-    public SpiralBug(int length)
+    public SpiralBug()
     {
         steps = 0;
-        sideLength = length;
+        sideLength = 1;
     }
 
     /**

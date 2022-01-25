@@ -16,7 +16,7 @@ public class CircleBug extends Bug
     }
 
     /**
-     * Moves to the next location of the square.
+     * Moves to the next location of the square. Turns one time once it hits the desired side length.
      */
     public void act()
     {
