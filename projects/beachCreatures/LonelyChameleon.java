@@ -1,8 +1,7 @@
-import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
-import info.gridworld.grid.Location;
-
+import java.awt.Color;
 import java.util.ArrayList;
+
+import info.gridworld.actor.Actor;
 
 public class LonelyChameleon extends ChameleonCritter
 {
@@ -16,22 +15,12 @@ public class LonelyChameleon extends ChameleonCritter
             int red = (int) (c.getRed() * (1 - DARKENING_FACTOR));
             int green = (int) (c.getGreen() * (1 - DARKENING_FACTOR));
             int blue = (int) (c.getBlue() * (1 - DARKENING_FACTOR));
-    
             setColor(new Color(red, green, blue));
+        }else{
+
+            int r = (int) (Math.random() * n);
+            Actor other = actors.get(r);
+            setColor(other.getColor());
         }
-        
-        int r = (int) (Math.random() * n);
-
-        Actor other = actors.get(r);
-        setColor(other.getColor());
     }
-
-    /**
-     * Turns towards the new location as it moves.
-     */
-    public void makeMove(Location loc)
-    {
-        setDirection(getLocation().getDirectionToward(loc));
-        super.makeMove(loc);
-    } 
 }
