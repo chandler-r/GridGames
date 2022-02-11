@@ -5,13 +5,17 @@ abstract class Pet extends Actor{
     //Fields
     protected String name;
     protected int hp;
-    protected int attk;
+    protected int atk;
 
     // Constructor
-    public Pet(String name, int hp, int attk){
+    public Pet(String name, int hp, int atk){
         this.name = name;
-        this.attk = attk;
+        this.atk = atk;
         this.hp = hp;
+    }
+
+    public String toString(){  
+        return String.format("Name: %s\tHP: %d\tATK: %d", name, hp, atk);
     }
 
     // Getters and Setters
@@ -19,27 +23,28 @@ abstract class Pet extends Actor{
         return hp;
     }
 
-    public int getAttk(){
-        return attk;
+    public int getAtk(){
+        return atk;
     }
 
     public void changeHp(int dHp){
-        hp +=dHp;
-        if (dHp > 0){
-            // heal
-        }
+        this.hp += dHp;
     }
 
-    public void changeAttk(int dAttk){
-        hp += dAttk;
-        if (dAttk > 0){
-            // boost attack
+    public void changeAtk(int dAtk){
+        this.atk += dAtk;
+    }
+
+    public boolean isDead(int hp){
+        if (hp <= 0){
+            return true;
         }
+        return false;
     }
 
 
     public void take_Damage(int dmg){
-        hp -= (dmg - def);
+        hp -= dmg;
         if (hp <= 0){
             //remove from world
         }
@@ -47,14 +52,14 @@ abstract class Pet extends Actor{
 
 
     public int calculateDamage(Pet opponent){
-        return atk - opponent.getDef();
+        return this.atk;
     }
 
     public void battle(Pet opponent){
-        int dmg = opponent.calculateDamage(this);
-        this.take_Damage(dmg);
+        int dmg = this.calculateDamage(opponent);
+        opponent.take_Damage(dmg);
     }
 
-    abstract void ability();
+    public abstract void ability(Pet opponent);
 
 }
